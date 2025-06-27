@@ -1,0 +1,6 @@
+telethon
+openai
+matplotlib
+pandas
+tqdm
+python-dotenv 
