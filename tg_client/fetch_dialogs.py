@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from telethon import TelegramClient
 from dotenv import load_dotenv
 
@@ -21,7 +21,7 @@ def fetch_recent_dialogs():
         async for dialog in client.iter_dialogs(limit=10):
             if dialog.is_user or dialog.is_group or dialog.is_channel:
                 messages = []
-                month_ago = datetime.now() - timedelta(days=30)
+                month_ago = datetime.now(timezone.utc) - timedelta(days=30)
                 async for msg in client.iter_messages(
                     dialog.id, offset_date=None, reverse=True
                 ):
